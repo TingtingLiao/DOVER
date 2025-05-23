@@ -242,8 +242,13 @@ def spatial_temporal_view_decomposition(
             video[stype] = torch.stack(imgs, 0).permute(3, 0, 1, 2)
         del ovideo
     else:
-        decord.bridge.set_bridge("torch")
-        vreader = VideoReader(video_path)
+        decord.bridge.set_bridge("torch") 
+        from videotool.io import load_video
+        vreader = load_video(video_path)
+        vreader = [torch.tensor(v).float() for v in vreader] 
+       
+        # vreader = VideoReader(video_path)  
+        
         ### Avoid duplicated video decoding!!! Important!!!!
         all_frame_inds = []
         frame_inds = {}

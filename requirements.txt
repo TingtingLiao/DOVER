@@ -12,3 +12,4 @@ wandb
 scikit-video
 thop==0.0.31-2005241907
 onnx
+git+https://github.com/TingtingLiao/videotool.git
